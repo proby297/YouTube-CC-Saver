@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube CC Saver",
+  "version": "1.0",
+  "description": "在观看 YouTube 时用热键保存当前字幕",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "commands": {
+    "save_subtitle": {
+      "suggested_key": {
+        "default": "Alt+S"
+      },
+      "description": "保存当前字幕"
+    }
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
